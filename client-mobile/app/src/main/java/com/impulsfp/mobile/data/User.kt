@@ -9,5 +9,6 @@ package com.impulsfp.mobile.data
 data class User(
     val id: Int,
     val username: String,
-    val role: String
+    val role: String,
+    val prova: String
 )
