@@ -1,11 +1,13 @@
 package com.impulsfp.mobile.ui
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
@@ -18,10 +20,12 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.impulsfp.mobile.R
 
 
 @Composable
@@ -45,14 +49,22 @@ fun LoginScreen(
         contentAlignment = Alignment.Center
     ) {
         Column(
-            modifier = Modifier.fillMaxWidth(),
-            verticalArrangement = Arrangement.spacedBy(12.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .align(Alignment.Center),
+            verticalArrangement = Arrangement.spacedBy(12.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            Image (
+                painter = painterResource(id = R.drawable.logo),
+                contentDescription = "Logo ImpulsFP",
+                modifier = Modifier.size(250.dp)
+            )
             Text(
-                text = "ImpulsFP",
+                text = "Inicia sessió",
                 style = MaterialTheme.typography.headlineMedium,
                 modifier = Modifier.fillMaxWidth(),
-                textAlign = TextAlign.Center
+                textAlign = TextAlign.Start
             )
 
             OutlinedTextField(
@@ -95,4 +107,9 @@ fun LoginScreen(
 
 
 
+}
+
+@Composable
+fun Image() {
+    TODO("Not yet implemented")
 }
