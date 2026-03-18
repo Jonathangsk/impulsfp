@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0-windows</TargetFramework>
+		<UseWindowsForms>true</UseWindowsForms>
+		<LangVersion>latest</LangVersion>
+		<Nullable>enable</Nullable>
+		<IsTestProject>true</IsTestProject>
+		
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\IMPULS Desktop\IMPULS Desktop.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="MSTest.TestAdapter" Version="3.0.2" />
+		<PackageReference Include="MSTest.TestFramework" Version="3.0.2" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.7.2" />
+		
+	</ItemGroup>
+
+</Project>

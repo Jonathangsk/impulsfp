@@ -16,12 +16,12 @@ namespace IMPULS_Desktop
             this.FormClosing += Form1_FormClosing;
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        public void Form1_Load(object sender, EventArgs e)
         {
 
         }
 
-        private bool ValidarUsuario(string usuari, string contrasenya, out string tipus)
+        public bool ValidarUsuario(string usuari, string contrasenya, out string tipus)
         {
             tipus = "";
 
@@ -56,7 +56,7 @@ namespace IMPULS_Desktop
             return false;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        public void button1_Click(object sender, EventArgs e)
         {
 
             string usuari = textBoxUsuario.Text;
@@ -75,6 +75,10 @@ namespace IMPULS_Desktop
                 else if (tipus == "empresa")
                 {
                     formulariUsuari = new Form4();
+                }
+                else if (tipus == "alumne")
+                {
+                    formulariUsuari = new Form5();
                 }
                 else
                 {
@@ -96,7 +100,7 @@ namespace IMPULS_Desktop
             }
         }
 
-        private void FormulariUsuari_FormClosed(object sender, FormClosedEventArgs e)
+        public void FormulariUsuari_FormClosed(object sender, FormClosedEventArgs e)
         {
             
             this.Show();
@@ -106,7 +110,7 @@ namespace IMPULS_Desktop
             textBoxContraseña.Text = "";
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        public void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
            
             Application.Exit();
