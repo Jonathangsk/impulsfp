@@ -10,20 +10,39 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
+/**
+ * ViewModel de la pantalla de login.
+ * Gestiona:
+ * - els valors introduïts per l'usuari
+ * - la validació de credencials
+ * - la crida al servidor per fer login
+ * - l'actualització de l'estat de la UI
+ *
+ */
 class LoginViewModel : ViewModel() {
 
     private val authController = AuthController()
     private val _uiState = MutableStateFlow(LoginUiState())
     val uiState: StateFlow<LoginUiState> = _uiState.asStateFlow()
 
+    /**
+     * Actualitza el username introduït a la UI.
+     */
     fun onUsernameChange(value: String) {
         _uiState.value = _uiState.value.copy(username = value)
     }
 
+    /**
+     * Actualitza la contrasenya introduïda a la UI-
+     */
     fun onPasswordChange(value: String) {
         _uiState.value = _uiState.value.copy(password = value)
     }
 
+    /**
+     * Valida les dades introduïdes i, si són correctes,
+     * intenta iniciar sessió contra el servidor.
+     */
     fun login() {
         val username = _uiState.value.username.trim()
         val password = _uiState.value.password.trim()
@@ -58,6 +77,10 @@ class LoginViewModel : ViewModel() {
         }
     }
 
+    /**
+     * Comprova que username i password no estiguin buits.
+     * @return missatge d'error si la validació falla, o null si és correcta.
+     */
     fun validateCredentials(username: String, password: String): String? {
         return when {
             username.isBlank() && password.isBlank() ->
@@ -70,6 +93,10 @@ class LoginViewModel : ViewModel() {
         }
     }
 
+    /**
+     * Reinicia l'estat de loginSuccess després de navegar,
+     * per evitar navegacions repetides
+     */
     fun resetLoginSuccess() {
         _uiState.value = _uiState.value.copy (loginSuccess = false)
     }

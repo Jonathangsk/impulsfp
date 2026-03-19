@@ -1,47 +1,109 @@
 package com.impulsfp.mobile.communications
 
 import com.impulsfp.mobile.data.User
+import com.impulsfp.mobile.network.ApiClient
+import com.impulsfp.mobile.network.LoginRequest
+import com.impulsfp.mobile.network.LoginResponse
+import com.impulsfp.mobile.network.LogoutRequest
 import kotlinx.coroutines.delay
 
+/**
+ * Classe encarregada de gestionar la comunicació amb el servidor
+ * per a les operacions d'autenticació.
+ *
+ * Aquesta classe envia les peticions de login i logout al backend
+ * i transforma les respostes del servidor en objectes útils per a l'app.
+ */
 class AuthController {
+
+    private val apiService = ApiClient.authApiService
+
+    /**
+     * Realitza el login contra el servidor.
+     * @param username Nom d'usuari introduït a la pantalla del login
+     * @param password Contrasenya introduïda a la pantalla del login
+     *
+     * @return Result<User>
+     *     Si tot va bé retorna un User amb:
+     *     - username: nom introduït per l'usuari
+     *     - role: rol intern de l'app (ALUMNE, EMPRESA, ADMIN)
+     *     - sessionId: sessió retornada pel servidor
+     *
+     *     Si hi ha error, retorna una excepció amb un missatge explicatiu.
+     */
     suspend fun login (username: String, password: String): Result<User> {
         return try {
-            delay(1000)
+            val response = apiService.login(
+                LoginRequest(
+                    username = username,
+                    password = password
+                )
+            )
 
-            /**
-             * Proves temporals fins connectar amb Servidor i Base de dades
-             */
-            val user = when {
-                username == "admin" && password == "1234" ->
-                    User(
-                        id = 1,
-                        username = "admin",
-                        role = "ADMIN"
-                    )
-                username == "empresa" && password == "1234" ->
-                    User(
-                        id = 2,
-                        username = "empresa",
-                        role = "EMPRESA"
-                    )
-                username == "alumne" && password == "1234" ->
-                    User(
-                        id = 3,
-                        username = "alumne",
-                        role = "ALUMNE"
-                    )
+            if (response.isSuccessful) {
+                val body = response.body()
 
-                else -> null
-            }
-
-            if (user != null) {
-                Result.success(user)
+                if (body != null) {
+                    val user = User(
+                        username = username,
+                        role = mapUserType(body.userType),
+                        sessionId = body.sessionId
+                    )
+                    Result.success(user)
+                } else {
+                    Result.failure(Exception("Resposta buida del servidor"))
+                }
             } else {
-                Result.failure(Exception("Credencials incorrectes"))
+                Result.failure(Exception("usuari o contrasenya incorrectes"))
             }
-
         } catch (e: Exception) {
-            Result.failure(e)
+            Result.failure(Exception("Error de connexió amb el servidr"))
+        }
+    }
+
+    /**
+     * Envia una petició de logout al servidor per finalitzar la sessió actual.
+     *
+     * @param sessionId Identificador de la sessió activa
+     * @return Result<Unit>
+     *     Si va bé, retorna èxit
+     *     Si falla, retorna una excepció amb un missatge d'error.
+     */
+    suspend fun logout(sessionId: String): Result<Unit> {
+        return try {
+            val response = apiService.logout(
+                LogoutRequest(sessionId = sessionId)
+            )
+
+            if (response.isSuccessful) {
+                Result.success(Unit)
+            } else {
+                Result.failure(Exception("Sessió no vàlida"))
+            }
+        } catch (e: Exception) {
+            Result.failure(Exception("Error de connexió amb el servidor"))
+        }
+    }
+    /**
+     * Converteix el userType retornat pel backend al rol intern
+     * utilitzat per la interfície de l'app.
+     *
+     * @param userType Valor rebut del servidor
+     * - student
+     * - company
+     * - admin
+     *
+     * @return Rol intern equivalent:
+     * - ALUMNE
+     * - EMPRESA
+     * - ADMIN
+     */
+    private fun mapUserType(userType: String): String {
+        return when (userType.lowercase()) {
+            "student" -> "ALUMNE"
+            "company" -> "EMPRESA"
+            "admin" -> "ADMIN"
+            else -> "DESCONEGUT"
         }
     }
 }

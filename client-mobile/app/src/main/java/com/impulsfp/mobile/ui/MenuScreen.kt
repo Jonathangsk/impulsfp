@@ -18,6 +18,13 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.impulsfp.mobile.data.SessionData
 
+/**
+ * Pantalla principal després del login.
+ * Mostra informació bàsica de l'usuari autenticat
+ * i permet tancar sessió.
+ *
+ * Pantalla provisional, es canviarà més endevant
+ */
 @Composable
 fun MenuScreen(
     onLogout: () -> Unit,
@@ -55,8 +62,9 @@ fun MenuScreen(
 
             Button(
                 onClick = {
-                    menuViewModel.logout()
-                    onLogout()
+                    menuViewModel.logout {
+                        onLogout()
+                    }
                 },
                 modifier = Modifier.testTag("logoutButton")
             ) {

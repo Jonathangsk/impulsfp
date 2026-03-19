@@ -13,6 +13,9 @@ import org.junit.Rule
 import org.junit.Test
 import kotlin.collections.isNotEmpty
 
+/**
+ * Test instrumentats de navegació de l'aplicació
+ */
 class AppNavigationTest {
 
     @get:Rule
@@ -33,7 +36,7 @@ class AppNavigationTest {
 
         composeRule.onNodeWithText("Menú alumne").assertExists()
     }
-
+    @Ignore("Depèn del backend real i del flux complex de login/logout")
     @Test
     fun logout_returns_to_login_screen() {
         composeRule.onNodeWithTag("usernameField").performTextInput("alumne")

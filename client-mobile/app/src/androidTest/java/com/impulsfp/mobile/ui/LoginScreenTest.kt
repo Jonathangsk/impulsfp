@@ -12,6 +12,9 @@ import org.junit.Ignore
 import org.junit.Rule
 import org.junit.Test
 
+/**
+ * Test instrumentats de la pantalla de login
+ */
 class LoginScreenTest {
 
     @get:Rule

@@ -1,7 +1,6 @@
 package com.impulsfp.mobile.ui
 
 import com.impulsfp.mobile.data.SessionData
-import com.impulsfp.mobile.ui.LoginViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.*
@@ -11,6 +10,10 @@ import org.junit.Before
 import org.junit.Ignore
 import org.junit.Test
 
+/**
+ * Test unitaris del LoginViewModel
+ *
+ */
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class LoginViewModelTest {
@@ -64,6 +67,25 @@ class LoginViewModelTest {
         assertNull(result)
     }
 
+    @Test
+    fun login_showsValidationError_whenFieldsAreBlank() = runTest {
+        val viewModel = LoginViewModel()
+
+        viewModel.onUsernameChange("")
+        viewModel.onPasswordChange("")
+
+        viewModel.login()
+
+        val state = viewModel.uiState.value
+        assertFalse(state.isLoading)
+        assertFalse(state.loginSuccess)
+        assertEquals(
+            "Cal introduir l'usuari i la contrasenya per iniciar sessió.",
+            state.errorMessage
+        )
+        assertNull(SessionData.currentUser)
+    }
+
     @Ignore("Depèn de credencials fake. S'adaptarà quan hi hagi backend real.")
     @Test
     fun login_updatesUiStateAndSession_whenCredentialsAreCorrect() = runTest {
@@ -104,24 +126,7 @@ class LoginViewModelTest {
         assertNull(SessionData.currentUser)
     }
 
-    @Test
-    fun login_showsValidationError_whenFieldsAreBlank() = runTest {
-        val viewModel = LoginViewModel()
 
-        viewModel.onUsernameChange("")
-        viewModel.onPasswordChange("")
-
-        viewModel.login()
-
-        val state = viewModel.uiState.value
-        assertFalse(state.isLoading)
-        assertFalse(state.loginSuccess)
-        assertEquals(
-            "Cal introduir l'usuari i la contrasenya per iniciar sessió.",
-            state.errorMessage
-        )
-        assertNull(SessionData.currentUser)
-    }
 
     @Ignore("Depèn de credencials fake. S'adaptarà quan hi hagi backend real.")
     @Test
