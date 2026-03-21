@@ -17,7 +17,7 @@ import org.junit.Test
  * - la validació de credencials
  * - l'actualització de l'estat de la UI
  * - l'emmagatzematge de la sessió quan el login és correcte
- * - la gestió d'erors quan el login falla
+ * - la gestió d'errors quan el login falla
  * - el reinici de l'estat loginSuccess
  *
  */
