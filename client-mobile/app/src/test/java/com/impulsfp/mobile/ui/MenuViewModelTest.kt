@@ -23,6 +23,8 @@ import kotlin.test.assertTrue
  * Verifiquen que el procés de logout amb dades simulades (fakes).
  * - neteja la sessió local
  * - executa l'acció final indicada
+ *
+ *  @author abenitez
  */
 @OptIn(ExperimentalCoroutinesApi::class)
 class MenuViewModelTest {

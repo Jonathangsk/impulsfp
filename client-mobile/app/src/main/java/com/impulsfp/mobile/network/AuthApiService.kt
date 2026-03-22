@@ -14,16 +14,30 @@ import retrofit2.http.Query
  * Endpoints disponibles:
  * -POST /auth/login
  * -POST /auth/logout
+ *
+ * @author abenitez
  */
 
 
 interface AuthApiService {
 
+    /**
+     * Realitza la petició de login al servidor.
+     *
+     * @param request Objecte amb les credencials de l'usuari
+     * @return Resposta HTTP amb el resultat del login
+     */
     @POST("auth/login")
     suspend fun login(
         @Body request: LoginRequest
     ): Response<LoginResponse>
 
+    /**
+     * Realitza la petició de logout al servidor.
+     *
+     * @param sessionId Identificador de sessió de l'usuari autenticat
+     * @return Resposta HTTP amb el resultat del logout
+     */
     @POST("auth/logout")
     suspend fun logout(
         @Query("sessionId") sessionId: String

@@ -3,7 +3,6 @@ package com.impulsfp.mobile.communications
 import com.impulsfp.mobile.data.User
 import com.impulsfp.mobile.network.ApiClient
 import com.impulsfp.mobile.network.LoginRequest
-import com.impulsfp.mobile.network.LogoutRequest
 
 /**
  * Classe encarregada de gestionar la comunicació amb el servidor
@@ -11,6 +10,8 @@ import com.impulsfp.mobile.network.LogoutRequest
  *
  * Aquesta classe envia les peticions de login i logout al backend
  * i transforma les respostes del servidor en objectes útils per a l'app.
+ *
+ * @abenitez
  */
 open class AuthController {
 
@@ -59,7 +60,15 @@ open class AuthController {
         }
     }
 
-
+    /**
+     * Realitza el logout contra el servidor utilitzant l'identificador de sessió
+     *
+     * @param sessionId Identificador de sessió de l'usuari autenticat
+     *
+     * @return Resultat de l'operació de logout:
+     * - Si és correcte, retorna [Unit]
+     * - Si hi ha error, retorna una excepció amb un missatge explicatiu
+     */
     open suspend fun logout(sessionId: String): Result<Unit> {
         return try {
             val response = apiService.logout(sessionId)
@@ -74,10 +83,10 @@ open class AuthController {
         }
     }
     /**
-     * Converteix el userType retornat pel backend al rol intern
+     * Converteix el tipus d'usuari retornat pel backend al rol intern
      * utilitzat per la interfície de l'app.
      *
-     * @param userType Valor rebut del servidor
+     * @param userType Valor rebut del servidor:
      * - student
      * - company
      * - admin
@@ -86,6 +95,7 @@ open class AuthController {
      * - ALUMNE
      * - EMPRESA
      * - ADMIN
+     * - DESCONEGUT en cas de valor no reconegut
      */
     private fun mapUserType(userType: String): String {
         return when (userType.lowercase()) {

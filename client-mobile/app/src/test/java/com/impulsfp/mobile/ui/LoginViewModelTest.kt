@@ -20,6 +20,8 @@ import org.junit.Test
  * - la gestió d'errors quan el login falla
  * - el reinici de l'estat loginSuccess
  *
+ *  @author abenitez
+ *
  */
 
 @OptIn(ExperimentalCoroutinesApi::class)

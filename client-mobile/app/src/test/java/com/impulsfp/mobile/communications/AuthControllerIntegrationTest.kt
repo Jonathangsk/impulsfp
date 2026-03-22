@@ -20,6 +20,8 @@ import kotlin.test.assertTrue
  *
  * IMPORTANT: Aquestes proves s'executen en local, així que la URL base
  * s'ha de configurar a http://localhost:8080/
+ *
+ *  @author abenitez
  */
 class AuthControllerIntegrationTest {
 
