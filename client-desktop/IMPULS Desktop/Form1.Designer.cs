@@ -66,7 +66,6 @@
             this.label4.TabIndex = 12;
             this.label4.Text = "Usuari";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label5
             // 
@@ -92,7 +91,6 @@
             this.textBoxUsuario.Size = new System.Drawing.Size(174, 38);
             this.textBoxUsuario.TabIndex = 25;
             this.textBoxUsuario.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBoxUsuario.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // button1
             // 
@@ -122,7 +120,6 @@
             this.g.TabIndex = 17;
             this.g.TabStop = false;
             this.g.Text = "g";
-            this.g.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // pictureBox1
             // 
@@ -131,7 +128,7 @@
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1335, 786);
+            this.pictureBox1.Size = new System.Drawing.Size(1184, 786);
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
@@ -151,7 +148,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(1335, 961);
+            this.ClientSize = new System.Drawing.Size(1184, 961);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.g);
             this.Controls.Add(this.button1);
@@ -160,7 +157,6 @@
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "IMPULS FP";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.g.ResumeLayout(false);
             this.g.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

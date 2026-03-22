@@ -39,6 +39,7 @@ C:\Users\jgran\Desktop\IMPULS\IMPULS Desktop\obj\Debug\IMPULS D.7816AAFE.Up2Date
 C:\Users\jgran\Desktop\IMPULS\IMPULS Desktop\obj\Debug\IMPULS Desktop.exe
 C:\Users\jgran\Desktop\IMPULS\IMPULS Desktop\obj\Debug\IMPULS Desktop.pdb
 C:\Users\jgran\Desktop\Impulsfp\client-desktop\IMPULS Desktop\bin\Debug\IMPULS Desktop.exe.config
+C:\Users\jgran\Desktop\Impulsfp\client-desktop\IMPULS Desktop\bin\Debug\IMPULS Desktop.xml
 C:\Users\jgran\Desktop\Impulsfp\client-desktop\IMPULS Desktop\bin\Debug\IMPULS Desktop.exe
 C:\Users\jgran\Desktop\Impulsfp\client-desktop\IMPULS Desktop\bin\Debug\IMPULS Desktop.pdb
 C:\Users\jgran\Desktop\Impulsfp\client-desktop\IMPULS Desktop\bin\Debug\EntityFramework.dll

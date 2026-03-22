@@ -1,129 +1,145 @@
 ﻿using System;
+using System.Net.Http;
+using System.Text;
+using System.Text.Json;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using Npgsql;
 
 namespace IMPULS_Desktop
 {
+    /// <summary>
+    /// <author>Josep Mª</author>
+    /// Formulari principal de l'aplicació IMPULS_Desktop.
+    /// Gestiona el login i obre el formulari segons el tipus d'usuari.
+    /// </summary>
     public partial class Form1 : Form
     {
+        public static string SessionId; // ID de sessió de l'usuari
+        private readonly string apiBase = "http://localhost:8080/auth"; // URL de l'API d'autenticació
 
-        private string connectionString = "Host=localhost;Port=5432;Username=postgres;Password=jose;Database=probando";
 
         public Form1()
         {
             InitializeComponent();
-            this.Load += Form1_Load;
             this.FormClosing += Form1_FormClosing;
         }
 
-        public void Form1_Load(object sender, EventArgs e)
+        /// <summary>
+        /// Valida un usuari mitjançant l'API.
+        /// </summary>
+        /// <param name="usuari">Nom d'usuari.</param>
+        /// <param name="contrasenya">Contrasenya de l'usuari.</param>
+        /// <returns>Tupla amb l'èxit del login i el tipus d'usuari.</returns>
+        public async Task<(bool Success, string UserType)> ValidarUsuarioAPI(string usuari, string contrasenya)
         {
-
-        }
-
-        public bool ValidarUsuario(string usuari, string contrasenya, out string tipus)
-        {
-            tipus = "";
-
             try
             {
-                using (var conn = new NpgsqlConnection(connectionString))
+                using (var client = new HttpClient())
                 {
-                    conn.Open();
+                    var url = $"{apiBase}/login";
+                    var requestObj = new { username = usuari, password = contrasenya };
+                    var json = JsonSerializer.Serialize(requestObj);
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                    string sql = "SELECT tipo FROM usuarios WHERE usuario = @usuario AND contraseña = @contraseña";
+                    var response = await client.PostAsync(url, content);
 
-                    using (var cmd = new NpgsqlCommand(sql, conn))
+                    if (response.IsSuccessStatusCode)
                     {
-                        cmd.Parameters.AddWithValue("usuario", usuari);
-                        cmd.Parameters.AddWithValue("contraseña", contrasenya);
+                        var responseString = await response.Content.ReadAsStringAsync();
+                        var loginResponse = JsonSerializer.Deserialize<LoginResponse>(
+                            responseString,
+                            new JsonSerializerOptions { PropertyNameCaseInsensitive = true }
+                        );
 
-                        var result = cmd.ExecuteScalar();
-
-                        if (result != null)
+                        if (loginResponse != null && !string.IsNullOrWhiteSpace(loginResponse.UserType))
                         {
-                            tipus = result.ToString();
-                            return true;
+                            string tipus = loginResponse.UserType.Trim().ToUpper();
+                            SessionId = loginResponse.SessionId;
+                            return (true, tipus);
                         }
+                    }
+                    else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+                    {
+                        MessageBox.Show("Usuari o contrasenya incorrectes");
+                        return (false, null);
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error en connectar amb la base de dades: " + ex.Message);
+                MessageBox.Show("Error conectando con el servidor: " + ex.Message);
             }
 
-            return false;
+            return (false, null);
         }
-
-        public void button1_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Event del botó de login. Obre el formulari corresponent segons el tipus d'usuari.
+        /// </summary>
+        
+        private async void button1_Click(object sender, EventArgs e)
         {
-
             string usuari = textBoxUsuario.Text;
             string contrasenya = textBoxContraseña.Text;
 
-            if (ValidarUsuario(usuari, contrasenya, out string tipus))
+            if (string.IsNullOrWhiteSpace(usuari) || string.IsNullOrWhiteSpace(contrasenya))
             {
-                MessageBox.Show($"Inici de sessió correcte. Tipus d'usuari: {tipus}");
+                MessageBox.Show("Introdueix usuari i contrasenya");
+                return;
+            }
+
+            var result = await ValidarUsuarioAPI(usuari, contrasenya);
+
+            if (result.Success)
+            {
+                string tipus = result.UserType;
+                MessageBox.Show($"Login correcte!\nTipus: '{tipus}'");
 
                 Form formulariUsuari;
 
-                if (tipus == "admin")
-                {
+                if (tipus == "ADMIN")
                     formulariUsuari = new Form2();
-                }
-                else if (tipus == "empresa")
-                {
+                else if (tipus == "COMPANY")
                     formulariUsuari = new Form4();
-                }
-                else if (tipus == "alumne")
-                {
+                else if (tipus == "STUDENT")
                     formulariUsuari = new Form5();
-                }
                 else
                 {
-                    MessageBox.Show("Tipus d'usuari desconegut");
+                    MessageBox.Show($"Tipus desconegut: '{tipus}'");
                     return;
                 }
 
                 formulariUsuari.Owner = this;
-
                 formulariUsuari.FormClosed += FormulariUsuari_FormClosed;
-
                 formulariUsuari.Show();
-
                 this.Hide();
-            }
-            else
-            {
-                MessageBox.Show("Usuari o contrasenya incorrectes");
             }
         }
 
-        public void FormulariUsuari_FormClosed(object sender, FormClosedEventArgs e)
+        private void FormulariUsuari_FormClosed(object sender, FormClosedEventArgs e)
         {
-            
             this.Show();
-
-          
             textBoxUsuario.Text = "";
             textBoxContraseña.Text = "";
         }
 
-        public void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-           
             Application.Exit();
         }
 
-        private void textBox3_TextChanged(object sender, EventArgs e) { }
-        private void pictureBox1_Click(object sender, EventArgs e) { }
-        private void textBox1_TextChanged(object sender, EventArgs e) { }
-        private void label4_Click(object sender, EventArgs e) { }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
+        /// <summary>
+        /// Representa la resposta de l'API de login.
+        /// </summary>
+        public class LoginResponse
         {
-
+            public string SessionId { get; set; }
+            public string UserType { get; set; }
         }
+
+        // Events buits del projecte original
+        private void label4_Click(object sender, EventArgs e) { }
+        private void textBox1_TextChanged(object sender, EventArgs e) { }
+        private void groupBox1_Enter(object sender, EventArgs e) { }
+        private void pictureBox1_Click(object sender, EventArgs e) { }
     }
 }
