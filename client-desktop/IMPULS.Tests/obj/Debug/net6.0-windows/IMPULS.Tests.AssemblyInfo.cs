@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("IMPULS.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+314df43756316c9708ab4eae5b1c1a8ccb9fdb3b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bc403aeee043d3caff0d76dc33aa32dcd159c6b8")]
 [assembly: System.Reflection.AssemblyProductAttribute("IMPULS.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("IMPULS.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

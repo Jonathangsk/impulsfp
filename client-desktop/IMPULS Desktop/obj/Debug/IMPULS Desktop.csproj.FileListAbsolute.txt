@@ -39,6 +39,7 @@ C:\Users\jgran\Desktop\IMPULS\IMPULS Desktop\obj\Debug\IMPULS D.7816AAFE.Up2Date
 C:\Users\jgran\Desktop\IMPULS\IMPULS Desktop\obj\Debug\IMPULS Desktop.exe
 C:\Users\jgran\Desktop\IMPULS\IMPULS Desktop\obj\Debug\IMPULS Desktop.pdb
 C:\Users\jgran\Desktop\Impulsfp\client-desktop\IMPULS Desktop\bin\Debug\IMPULS Desktop.exe.config
+C:\Users\jgran\Desktop\Impulsfp\client-desktop\IMPULS Desktop\bin\Debug\IMPULS Desktop.xml
 C:\Users\jgran\Desktop\Impulsfp\client-desktop\IMPULS Desktop\bin\Debug\IMPULS Desktop.exe
 C:\Users\jgran\Desktop\Impulsfp\client-desktop\IMPULS Desktop\bin\Debug\IMPULS Desktop.pdb
 C:\Users\jgran\Desktop\Impulsfp\client-desktop\IMPULS Desktop\bin\Debug\EntityFramework.dll
@@ -72,10 +73,10 @@ C:\Users\jgran\Desktop\Impulsfp\client-desktop\IMPULS Desktop\obj\Debug\IMPULS D
 C:\Users\jgran\Desktop\Impulsfp\client-desktop\IMPULS Desktop\obj\Debug\IMPULS_Desktop.Form1.resources
 C:\Users\jgran\Desktop\Impulsfp\client-desktop\IMPULS Desktop\obj\Debug\IMPULS_Desktop.Form2.resources
 C:\Users\jgran\Desktop\Impulsfp\client-desktop\IMPULS Desktop\obj\Debug\IMPULS_Desktop.Form4.resources
-C:\Users\jgran\Desktop\Impulsfp\client-desktop\IMPULS Desktop\obj\Debug\IMPULS_Desktop.Form5.resources
 C:\Users\jgran\Desktop\Impulsfp\client-desktop\IMPULS Desktop\obj\Debug\IMPULS_Desktop.Properties.Resources.resources
 C:\Users\jgran\Desktop\Impulsfp\client-desktop\IMPULS Desktop\obj\Debug\IMPULS Desktop.csproj.GenerateResource.cache
 C:\Users\jgran\Desktop\Impulsfp\client-desktop\IMPULS Desktop\obj\Debug\IMPULS Desktop.csproj.CoreCompileInputs.cache
 C:\Users\jgran\Desktop\Impulsfp\client-desktop\IMPULS Desktop\obj\Debug\IMPULS D.7816AAFE.Up2Date
 C:\Users\jgran\Desktop\Impulsfp\client-desktop\IMPULS Desktop\obj\Debug\IMPULS Desktop.exe
 C:\Users\jgran\Desktop\Impulsfp\client-desktop\IMPULS Desktop\obj\Debug\IMPULS Desktop.pdb
+C:\Users\jgran\Desktop\Impulsfp\client-desktop\IMPULS Desktop\obj\Debug\IMPULS_Desktop.Form3.resources
