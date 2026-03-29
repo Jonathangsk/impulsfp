@@ -15,7 +15,9 @@ namespace IMPULS_Desktop
     public partial class Form1 : Form
     {
         public static string SessionId; // ID de sessió de l'usuari
-        private readonly string apiBase = "http://localhost:8080/auth"; // URL de l'API d'autenticació
+      //  public static string apiBase = "http://10.2.163.125:8080/auth";
+//        public static string apiBase = "http://0bb0dfb7-9b4c-40bc-a0be.5b8c35470a40.bastion.elmeuescriptori.cat:80/auth";
+                private readonly string apiBase = "http://localhost:8080/auth"; // URL de l'API d'autenticació
 
 
         public Form1()
@@ -94,24 +96,29 @@ namespace IMPULS_Desktop
                 string tipus = result.UserType;
                 MessageBox.Show($"Login correcte!\nTipus: '{tipus}'");
 
-                Form formulariUsuari;
+                Form formulariUsuari = null; 
+                //Form formulariUsuari;
 
                 if (tipus == "ADMIN")
                     formulariUsuari = new Form2();
                 else if (tipus == "COMPANY")
                     formulariUsuari = new Form4();
                 else if (tipus == "STUDENT")
-                    formulariUsuari = new Form5();
+                    MessageBox.Show("Inicia sessió des de l'aplicació mòbil");
+
+                // formulariUsuari = new Form3();
                 else
                 {
                     MessageBox.Show($"Tipus desconegut: '{tipus}'");
                     return;
                 }
-
-                formulariUsuari.Owner = this;
-                formulariUsuari.FormClosed += FormulariUsuari_FormClosed;
-                formulariUsuari.Show();
-                this.Hide();
+                if (formulariUsuari != null)
+                {
+                    formulariUsuari.Owner = this;
+                    formulariUsuari.FormClosed += FormulariUsuari_FormClosed;
+                    formulariUsuari.Show();
+                    this.Hide();
+                }
             }
         }
 
@@ -141,5 +148,10 @@ namespace IMPULS_Desktop
         private void textBox1_TextChanged(object sender, EventArgs e) { }
         private void groupBox1_Enter(object sender, EventArgs e) { }
         private void pictureBox1_Click(object sender, EventArgs e) { }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

@@ -4,6 +4,31 @@
         <name>IMPULS Desktop</name>
     </assembly>
     <members>
+        <member name="T:IMPULS_Desktop.Form1">
+            <summary>
+            <author>Josep Mª</author>
+            Formulari principal de l'aplicació IMPULS_Desktop.
+            Gestiona el login i obre el formulari segons el tipus d'usuari.
+            </summary>
+        </member>
+        <member name="M:IMPULS_Desktop.Form1.ValidarUsuarioAPI(System.String,System.String)">
+            <summary>
+            Valida un usuari mitjançant l'API.
+            </summary>
+            <param name="usuari">Nom d'usuari.</param>
+            <param name="contrasenya">Contrasenya de l'usuari.</param>
+            <returns>Tupla amb l'èxit del login i el tipus d'usuari.</returns>
+        </member>
+        <member name="M:IMPULS_Desktop.Form1.button1_Click(System.Object,System.EventArgs)">
+            <summary>
+            Event del botó de login. Obre el formulari corresponent segons el tipus d'usuari.
+            </summary>
+        </member>
+        <member name="T:IMPULS_Desktop.Form1.LoginResponse">
+            <summary>
+            Representa la resposta de l'API de login.
+            </summary>
+        </member>
         <member name="F:IMPULS_Desktop.Form1.components">
             <summary>
             Variable del diseñador necesaria.
@@ -22,15 +47,15 @@
             </summary>
         </member>
         <member name="T:IMPULS_Desktop.Form2">
+            <summary>
+            <author>Josep Mª</author>
             Formulari de gestió d'usuari administratiu.
             Permet tancar sessió (logout) de l'aplicació contra l'API REST.
-            
-            @autor Josep Mª
+            </summary>
         </member>
         <member name="F:IMPULS_Desktop.Form2.client">
             <summary>
             Client HTTP reutilitzable per fer peticions a l'API.
-            Es declara estàtic per millorar el rendiment.
             </summary>
         </member>
         <member name="M:IMPULS_Desktop.Form2.#ctor">
@@ -41,20 +66,19 @@
         </member>
         <member name="M:IMPULS_Desktop.Form2.Form2_Load(System.Object,System.EventArgs)">
             <summary>
-            Esdeveniment que s'executa en carregar el formulari.
+            Esdeveniment de càrrega del formulari.
             Actualment sense funcionalitat addicional.
             </summary>
         </member>
         <member name="M:IMPULS_Desktop.Form2.LogoutAPI">
             <summary>
-            Mètode que realitza el logout de l'usuari a l'API.
-            Envia la sessió actual com a paràmetre de query i mostra un missatge segons el resultat.
+            Realitza el logout de l'usuari a l'API.
             </summary>
-            <returns>true si el logout és correcte, false en cas contrari</returns>
+            <returns>true si el logout és correcte, false en cas contrari.</returns>
         </member>
         <member name="M:IMPULS_Desktop.Form2.button1_Click(System.Object,System.EventArgs)">
             <summary>
-            Esdeveniment del botó de logout.
+            Event del botó de logout.
             Invoca LogoutAPI i, si és correcte, neteja la sessió i tanca el formulari.
             </summary>
         </member>
@@ -76,15 +100,15 @@
             </summary>
         </member>
         <member name="T:IMPULS_Desktop.Form4">
+            <summary>
+            <author>Josep Mª</author>
             Formulari per a usuaris de tipus "company".
             Permet tancar sessió (logout) de l'aplicació contra l'API REST.
-            
-            @autor Josep Mª
+            </summary>
         </member>
         <member name="F:IMPULS_Desktop.Form4.client">
             <summary>
             Client HTTP reutilitzable per fer peticions a l'API.
-            Es declara estàtic per millorar el rendiment.
             </summary>
         </member>
         <member name="M:IMPULS_Desktop.Form4.#ctor">
@@ -95,20 +119,19 @@
         </member>
         <member name="M:IMPULS_Desktop.Form4.Form4_Load(System.Object,System.EventArgs)">
             <summary>
-            Esdeveniment que s'executa en carregar el formulari.
+            Esdeveniment de càrrega del formulari.
             Actualment sense funcionalitat addicional.
             </summary>
         </member>
         <member name="M:IMPULS_Desktop.Form4.LogoutAPI">
             <summary>
-            Mètode que realitza el logout de l'usuari a l'API.
-            Envia la sessió actual com a paràmetre de query i mostra un missatge segons el resultat.
+            Realitza el logout de l'usuari a l'API.
             </summary>
-            <returns>true si el logout és correcte, false en cas contrari</returns>
+            <returns>true si el logout és correcte, false en cas contrari.</returns>
         </member>
         <member name="M:IMPULS_Desktop.Form4.button1_Click(System.Object,System.EventArgs)">
             <summary>
-            Esdeveniment del botó de logout.
+            Event del botó de logout.
             Invoca LogoutAPI i, si és correcte, neteja la sessió i tanca el formulari.
             </summary>
         </member>
@@ -129,55 +152,54 @@
             the contents of this method with the code editor.
             </summary>
         </member>
-        <member name="T:IMPULS_Desktop.Form5">
+        <member name="T:IMPULS_Desktop.Form3">
+            <summary>
+            <author>Josep Mª</author>
             Formulari per a usuaris de tipus "student".
             Permet tancar sessió (logout) de l'aplicació contra l'API REST.
-            
-            @autor Josep Mª
-        </member>
-        <member name="F:IMPULS_Desktop.Form5.client">
-            <summary>
-            Client HTTP reutilitzable per fer peticions a l'API.
-            Es declara estàtic per millorar el rendiment.
             </summary>
         </member>
-        <member name="M:IMPULS_Desktop.Form5.#ctor">
+        <member name="F:IMPULS_Desktop.Form3.client">
+            <summary>
+            Client HTTP reutilitzable per fer peticions a l'API.
+            </summary>
+        </member>
+        <member name="M:IMPULS_Desktop.Form3.#ctor">
             <summary>
             Constructor del formulari.
             Inicialitza els components del formulari.
             </summary>
         </member>
-        <member name="M:IMPULS_Desktop.Form5.Form5_Load(System.Object,System.EventArgs)">
+        <member name="M:IMPULS_Desktop.Form3.Form5_Load(System.Object,System.EventArgs)">
             <summary>
-            Esdeveniment que s'executa en carregar el formulari.
+            Esdeveniment de càrrega del formulari.
             Actualment sense funcionalitat addicional.
             </summary>
         </member>
-        <member name="M:IMPULS_Desktop.Form5.LogoutAPI">
+        <member name="M:IMPULS_Desktop.Form3.LogoutAPI">
             <summary>
-            Mètode que realitza el logout de l'usuari a l'API.
-            Envia la sessió actual com a paràmetre de query i mostra un missatge segons el resultat.
+            Realitza el logout de l'usuari a l'API.
             </summary>
-            <returns>true si el logout és correcte, false en cas contrari</returns>
+            <returns>true si el logout és correcte, false en cas contrari.</returns>
         </member>
-        <member name="M:IMPULS_Desktop.Form5.button1_Click(System.Object,System.EventArgs)">
+        <member name="M:IMPULS_Desktop.Form3.button1_Click(System.Object,System.EventArgs)">
             <summary>
-            Esdeveniment del botó de logout.
+            Event del botó de logout.
             Invoca LogoutAPI i, si és correcte, neteja la sessió i tanca el formulari.
             </summary>
         </member>
-        <member name="F:IMPULS_Desktop.Form5.components">
+        <member name="F:IMPULS_Desktop.Form3.components">
             <summary>
             Required designer variable.
             </summary>
         </member>
-        <member name="M:IMPULS_Desktop.Form5.Dispose(System.Boolean)">
+        <member name="M:IMPULS_Desktop.Form3.Dispose(System.Boolean)">
             <summary>
             Clean up any resources being used.
             </summary>
             <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         </member>
-        <member name="M:IMPULS_Desktop.Form5.InitializeComponent">
+        <member name="M:IMPULS_Desktop.Form3.InitializeComponent">
             <summary>
             Required method for Designer support - do not modify
             the contents of this method with the code editor.

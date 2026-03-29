@@ -43,6 +43,7 @@ namespace IMPULS_Desktop
         private async Task<bool> LogoutAPI()
         {
             string url = $"http://localhost:8080/auth/logout?sessionId={Form1.SessionId}";
+        //    string url = $"{Form1.apiBase}/logout?sessionId={Form1.SessionId}";
 
             try
             {
