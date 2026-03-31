@@ -12,7 +12,7 @@ namespace IMPULS_Desktop
     /// Formulari principal de l'aplicació IMPULS_Desktop.
     /// Gestiona el login i obre el formulari segons el tipus d'usuari.
     /// </summary>
-    public partial class Form1 : Form
+    public partial class PantallaPrincipal : Form
     {
         public static string SessionId; // ID de sessió de l'usuari
       //  public static string apiBase = "http://10.2.163.125:8080/auth";
@@ -20,7 +20,7 @@ namespace IMPULS_Desktop
                 private readonly string apiBase = "http://localhost:8080/auth"; // URL de l'API d'autenticació
 
 
-        public Form1()
+        public PantallaPrincipal()
         {
             InitializeComponent();
             this.FormClosing += Form1_FormClosing;
@@ -100,9 +100,9 @@ namespace IMPULS_Desktop
                 //Form formulariUsuari;
 
                 if (tipus == "ADMIN")
-                    formulariUsuari = new Form2();
+                    formulariUsuari = new Administrador();
                 else if (tipus == "COMPANY")
-                    formulariUsuari = new Form4();
+                    formulariUsuari = new Empresa();
                 else if (tipus == "STUDENT")
                     MessageBox.Show("Inicia sessió des de l'aplicació mòbil");
 
@@ -152,6 +152,15 @@ namespace IMPULS_Desktop
         private void button2_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            CanviContrasenya form = new CanviContrasenya();
+            form.Owner = this;   
+            form.Show();
+
+            this.Hide();
         }
     }
 }

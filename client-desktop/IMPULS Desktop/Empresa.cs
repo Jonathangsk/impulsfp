@@ -10,7 +10,7 @@ namespace IMPULS_Desktop
     /// Formulari per a usuaris de tipus "company".
     /// Permet tancar sessió (logout) de l'aplicació contra l'API REST.
     /// </summary>
-    public partial class Form4 : Form
+    public partial class Empresa : Form
     {
         /// <summary>
         /// Client HTTP reutilitzable per fer peticions a l'API.
@@ -22,7 +22,7 @@ namespace IMPULS_Desktop
         /// Constructor del formulari.
         /// Inicialitza els components del formulari.
         /// </summary>
-        public Form4()
+        public Empresa()
         {
             InitializeComponent();
         }
@@ -42,7 +42,7 @@ namespace IMPULS_Desktop
         /// <returns>true si el logout és correcte, false en cas contrari.</returns>
         private async Task<bool> LogoutAPI()
         {
-            string url = $"http://localhost:8080/auth/logout?sessionId={Form1.SessionId}";
+            string url = $"http://localhost:8080/auth/logout?sessionId={PantallaPrincipal.SessionId}";
         //    string url = $"{Form1.apiBase}/logout?sessionId={Form1.SessionId}";
 
             try
@@ -80,7 +80,7 @@ namespace IMPULS_Desktop
             if (ok)
             {
                 // Neteja de la sessió
-                Form1.SessionId = null;
+                PantallaPrincipal.SessionId = null;
 
                 // Tanca aquest form i mostra Form1
                 this.Close();
@@ -92,5 +92,25 @@ namespace IMPULS_Desktop
         private void label1_Click(object sender, EventArgs e) { }
         private void groupBox1_Enter(object sender, EventArgs e) { }
         private void pictureBox1_Click(object sender, EventArgs e) { }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            PerfilEmpresa form = new PerfilEmpresa();
+            form.Show();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            OfertesDeTreball form = new OfertesDeTreball();
+            form.Show();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            PublicarOferta form = new PublicarOferta();
+            form.Show();
+
+
+        }
     }
 }
