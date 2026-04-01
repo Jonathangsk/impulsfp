@@ -102,7 +102,7 @@ namespace IMPULS_Desktop
                 if (tipus == "ADMIN")
                     formulariUsuari = new Administrador();
                 else if (tipus == "COMPANY")
-                    formulariUsuari = new Empresa();
+                    formulariUsuari = new PantallaEmpresa();
                 else if (tipus == "STUDENT")
                     MessageBox.Show("Inicia sessió des de l'aplicació mòbil");
 
@@ -158,6 +158,15 @@ namespace IMPULS_Desktop
         {
             CanviContrasenya form = new CanviContrasenya();
             form.Owner = this;   
+            form.Show();
+
+            this.Hide();
+        }
+
+        private void btnRegistreNovaEmpresa_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            RegistreNovaEmpresa form = new RegistreNovaEmpresa(this);
+            form.Owner = this;
             form.Show();
 
             this.Hide();

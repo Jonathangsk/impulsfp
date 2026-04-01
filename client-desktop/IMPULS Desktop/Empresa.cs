@@ -1,116 +1,30 @@
 ﻿using System;
-using System.Net.Http;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace IMPULS_Desktop
 {
-    /// <summary>
-    /// <author>Josep Mª</author>
-    /// Formulari per a usuaris de tipus "company".
-    /// Permet tancar sessió (logout) de l'aplicació contra l'API REST.
-    /// </summary>
-    public partial class Empresa : Form
+    internal class Empresa
     {
-        /// <summary>
-        /// Client HTTP reutilitzable per fer peticions a l'API.
-        /// </summary>
-        private static readonly HttpClient client = new HttpClient();
+        public int Id { get; set; }
 
+        public string Name { get; set; }
 
-        /// <summary>
-        /// Constructor del formulari.
-        /// Inicialitza els components del formulari.
-        /// </summary>
-        public Empresa()
-        {
-            InitializeComponent();
-        }
+        public string Email { get; set; }
 
-        /// <summary>
-        /// Esdeveniment de càrrega del formulari.
-        /// Actualment sense funcionalitat addicional.
-        /// </summary>
-        private void Form4_Load(object sender, EventArgs e)
-        {
+        public string Address { get; set; }
 
-        }
+        public string VatNumber { get; set; }
 
-        /// <summary>
-        /// Realitza el logout de l'usuari a l'API.
-        /// </summary>
-        /// <returns>true si el logout és correcte, false en cas contrari.</returns>
-        private async Task<bool> LogoutAPI()
-        {
-            string url = $"http://localhost:8080/auth/logout?sessionId={PantallaPrincipal.SessionId}";
-        //    string url = $"{Form1.apiBase}/logout?sessionId={Form1.SessionId}";
+        public string Website { get; set; }
 
-            try
-            {
-                // Enviament de la petició POST (sense body)
-                HttpResponseMessage response = await client.PostAsync(url, null);
-                string responseBody = await response.Content.ReadAsStringAsync();
+        public string Phone { get; set; }
 
-                if (response.IsSuccessStatusCode)
-                {
-                    MessageBox.Show("Sessió finalitzada correctament");
-                    return true;
-                }
-                else
-                {
-                    MessageBox.Show("Error al tancar sessió: " + responseBody);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error en fer logout: " + ex.Message);
-            }
+        public string Niche { get; set; }
 
-            return false;
-        }
+        public string Technologies { get; set; }
 
-        /// <summary>
-        /// Event del botó de logout.
-        /// Invoca LogoutAPI i, si és correcte, neteja la sessió i tanca el formulari.
-        /// </summary>
-        private async void button1_Click(object sender, EventArgs e)
-        {
-            bool ok = await LogoutAPI();
+        public string ProfilePhoto { get; set; }
 
-            if (ok)
-            {
-                // Neteja de la sessió
-                PantallaPrincipal.SessionId = null;
-
-                // Tanca aquest form i mostra Form1
-                this.Close();
-                this.Owner?.Show();
-            }
-        }
-
-        // Events buits del projecte original
-        private void label1_Click(object sender, EventArgs e) { }
-        private void groupBox1_Enter(object sender, EventArgs e) { }
-        private void pictureBox1_Click(object sender, EventArgs e) { }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-            PerfilEmpresa form = new PerfilEmpresa();
-            form.Show();
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            OfertesDeTreball form = new OfertesDeTreball();
-            form.Show();
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            PublicarOferta form = new PublicarOferta();
-            form.Show();
-
-
-        }
+        public List<Oferta> ActiveOffers { get; set; } = new List<Oferta>();
     }
 }

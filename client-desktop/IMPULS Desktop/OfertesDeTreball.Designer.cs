@@ -34,6 +34,7 @@
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnTancar = new System.Windows.Forms.Button();
             this.btnCandidats = new System.Windows.Forms.Button();
+            this.btnTornar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -44,16 +45,15 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(797, 434);
+            this.dataGridView1.Size = new System.Drawing.Size(1234, 434);
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // btnEditar
             // 
             this.btnEditar.BackColor = System.Drawing.SystemColors.Highlight;
             this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnEditar.Location = new System.Drawing.Point(29, 465);
+            this.btnEditar.Location = new System.Drawing.Point(3, 465);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(130, 39);
             this.btnEditar.TabIndex = 1;
@@ -66,7 +66,7 @@
             this.btnEliminar.BackColor = System.Drawing.SystemColors.Highlight;
             this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnEliminar.Location = new System.Drawing.Point(165, 465);
+            this.btnEliminar.Location = new System.Drawing.Point(208, 465);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(162, 39);
             this.btnEliminar.TabIndex = 2;
@@ -79,7 +79,7 @@
             this.btnTancar.BackColor = System.Drawing.SystemColors.Highlight;
             this.btnTancar.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTancar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnTancar.Location = new System.Drawing.Point(345, 465);
+            this.btnTancar.Location = new System.Drawing.Point(717, 465);
             this.btnTancar.Name = "btnTancar";
             this.btnTancar.Size = new System.Drawing.Size(137, 39);
             this.btnTancar.TabIndex = 3;
@@ -92,13 +92,26 @@
             this.btnCandidats.BackColor = System.Drawing.SystemColors.Highlight;
             this.btnCandidats.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCandidats.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnCandidats.Location = new System.Drawing.Point(504, 465);
+            this.btnCandidats.Location = new System.Drawing.Point(460, 465);
             this.btnCandidats.Name = "btnCandidats";
-            this.btnCandidats.Size = new System.Drawing.Size(155, 39);
+            this.btnCandidats.Size = new System.Drawing.Size(184, 39);
             this.btnCandidats.TabIndex = 4;
-            this.btnCandidats.Text = "Candidats";
+            this.btnCandidats.Text = "👤Candidats";
             this.btnCandidats.UseVisualStyleBackColor = false;
             this.btnCandidats.Click += new System.EventHandler(this.btnCandidats_Click);
+            // 
+            // btnTornar
+            // 
+            this.btnTornar.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnTornar.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTornar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnTornar.Location = new System.Drawing.Point(974, 465);
+            this.btnTornar.Name = "btnTornar";
+            this.btnTornar.Size = new System.Drawing.Size(137, 39);
+            this.btnTornar.TabIndex = 5;
+            this.btnTornar.Text = "↩Tornar";
+            this.btnTornar.UseVisualStyleBackColor = false;
+            this.btnTornar.Click += new System.EventHandler(this.btnTornar_Click);
             // 
             // OfertesDeTreball
             // 
@@ -106,7 +119,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(800, 533);
+            this.ClientSize = new System.Drawing.Size(1262, 533);
+            this.Controls.Add(this.btnTornar);
             this.Controls.Add(this.btnCandidats);
             this.Controls.Add(this.btnTancar);
             this.Controls.Add(this.btnEliminar);
@@ -127,5 +141,6 @@
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnTancar;
         private System.Windows.Forms.Button btnCandidats;
+        private System.Windows.Forms.Button btnTornar;
     }
 }

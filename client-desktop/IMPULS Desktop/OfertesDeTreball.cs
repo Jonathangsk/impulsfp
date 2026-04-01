@@ -28,20 +28,36 @@ namespace IMPULS_Desktop
         {
             using (HttpClient client = new HttpClient())
             {
-                var json = await client.GetStringAsync("http://localhost:8080/offers");
+                try
+                {
+                    var json = await client.GetStringAsync("http://localhost:8080/offers");
 
-                return JsonSerializer.Deserialize<List<Oferta>>(json,
-    new JsonSerializerOptions
-    {
-        PropertyNameCaseInsensitive = true
-    }) ?? new List<Oferta>();
+                    return JsonSerializer.Deserialize<List<Oferta>>(
+                        json,
+                        new JsonSerializerOptions
+                        {
+                            PropertyNameCaseInsensitive = true
+                        }
+                    ) ?? new List<Oferta>();
+                }
+                catch (HttpRequestException ex)
+                {
+                    MessageBox.Show("No se pudo conectar al servidor (posible 404 o servidor caído).");
+                }
+                catch (TaskCanceledException)
+                {
+                    MessageBox.Show("La petición tardó demasiado (timeout).");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error inesperado: " + ex.Message);
+                }
+
+                return new List<Oferta>();
             }
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-           
-        }  
+
 
        //Editar
 
@@ -78,7 +94,8 @@ namespace IMPULS_Desktop
         //Tancar
         private void btnTancar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
+            
         }
 
         private void btnCandidats_Click(object sender, EventArgs e)
@@ -97,8 +114,14 @@ namespace IMPULS_Desktop
                 return;
             }
 
-            Candidats form = new Candidats(oferta.Applicants);
+            var form = new Candidats();
             form.Show();
+
+        }
+
+        private void btnTornar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
     }

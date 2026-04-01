@@ -157,14 +157,18 @@ namespace IMPULS_Desktop
                     return;
                 }
 
-                //Creem l'objeta de la oferta
                 Oferta oferta = new Oferta
                 {
                     Id = string.IsNullOrWhiteSpace(textIdentificador.Text) ? 0 : int.Parse(textIdentificador.Text),
 
                     Title = textTitol.Text,
                     Description = textDescripcio.Text,
-                    Company = textEmpresa.Text,
+
+                    Company = new Empresa
+                    {
+                        Name = textEmpresa.Text
+                    }, // 👈 AQUÍ VA COMA
+
                     RequiredSkills = textHabilitats.Text,
                     Location = textUbicacio.Text,
 
@@ -182,7 +186,6 @@ namespace IMPULS_Desktop
 
                     Observacions = textObservacions.Text
                 };
-
                 //Enviem a la API
                 using (HttpClient client = new HttpClient())
                 {
@@ -229,6 +232,11 @@ namespace IMPULS_Desktop
         }
 
         private void btnTancar_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnTornar_Click(object sender, EventArgs e)
         {
             this.Close();
         }

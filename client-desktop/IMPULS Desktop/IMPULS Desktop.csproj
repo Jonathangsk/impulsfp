@@ -105,6 +105,13 @@
     <Compile Include="CanviContrasenya.Designer.cs">
       <DependentUpon>CanviContrasenya.cs</DependentUpon>
     </Compile>
+    <Compile Include="Empresa.cs" />
+    <Compile Include="PerfilDeEmpresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PerfilDeEmpresa.Designer.cs">
+      <DependentUpon>PerfilDeEmpresa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Oferta.cs" />
     <Compile Include="OfertesDeTreball.cs">
       <SubType>Form</SubType>
@@ -112,11 +119,11 @@
     <Compile Include="OfertesDeTreball.Designer.cs">
       <DependentUpon>OfertesDeTreball.cs</DependentUpon>
     </Compile>
-    <Compile Include="PerfilEmpresa.cs">
+    <Compile Include="RegistreNovaEmpresa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PerfilEmpresa.Designer.cs">
-      <DependentUpon>PerfilEmpresa.cs</DependentUpon>
+    <Compile Include="RegistreNovaEmpresa.Designer.cs">
+      <DependentUpon>RegistreNovaEmpresa.cs</DependentUpon>
     </Compile>
     <Compile Include="Pantalla Principal.cs">
       <SubType>Form</SubType>
@@ -130,11 +137,11 @@
     <Compile Include="Administrador.Designer.cs">
       <DependentUpon>Administrador.cs</DependentUpon>
     </Compile>
-    <Compile Include="Empresa.cs">
+    <Compile Include="PantallaEmpresa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Empresa.Designer.cs">
-      <DependentUpon>Empresa.cs</DependentUpon>
+    <Compile Include="PantallaEmpresa.Designer.cs">
+      <DependentUpon>PantallaEmpresa.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -150,6 +157,9 @@
     <EmbeddedResource Include="CanviContrasenya.resx">
       <DependentUpon>CanviContrasenya.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PerfilDeEmpresa.resx">
+      <DependentUpon>PerfilDeEmpresa.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="OfertesDeTreball.resx">
       <DependentUpon>OfertesDeTreball.cs</DependentUpon>
     </EmbeddedResource>
@@ -159,11 +169,11 @@
     <EmbeddedResource Include="Administrador.resx">
       <DependentUpon>Administrador.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Empresa.resx">
-      <DependentUpon>Empresa.cs</DependentUpon>
+    <EmbeddedResource Include="PantallaEmpresa.resx">
+      <DependentUpon>PantallaEmpresa.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PerfilEmpresa.resx">
-      <DependentUpon>PerfilEmpresa.cs</DependentUpon>
+    <EmbeddedResource Include="RegistreNovaEmpresa.resx">
+      <DependentUpon>RegistreNovaEmpresa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

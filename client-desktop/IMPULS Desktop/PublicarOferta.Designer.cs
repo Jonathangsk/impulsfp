@@ -35,6 +35,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnTornar = new System.Windows.Forms.Button();
             this.comboEstatdelaoferta = new System.Windows.Forms.ComboBox();
             this.comboCicle = new System.Windows.Forms.ComboBox();
             this.comboTipusdecontracte = new System.Windows.Forms.ComboBox();
@@ -125,6 +126,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.btnTornar);
             this.groupBox1.Controls.Add(this.comboEstatdelaoferta);
             this.groupBox1.Controls.Add(this.comboCicle);
             this.groupBox1.Controls.Add(this.comboTipusdecontracte);
@@ -156,12 +158,25 @@
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Location = new System.Drawing.Point(82, 35);
+            this.groupBox1.Location = new System.Drawing.Point(85, 1);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(689, 889);
+            this.groupBox1.Size = new System.Drawing.Size(689, 848);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // btnTornar
+            // 
+            this.btnTornar.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnTornar.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTornar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnTornar.Location = new System.Drawing.Point(478, 786);
+            this.btnTornar.Name = "btnTornar";
+            this.btnTornar.Size = new System.Drawing.Size(145, 40);
+            this.btnTornar.TabIndex = 46;
+            this.btnTornar.Text = "↩Tornar";
+            this.btnTornar.UseVisualStyleBackColor = false;
+            this.btnTornar.Click += new System.EventHandler(this.btnTornar_Click);
             // 
             // comboEstatdelaoferta
             // 
@@ -398,11 +413,11 @@
             this.btnTancar.BackColor = System.Drawing.SystemColors.Highlight;
             this.btnTancar.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTancar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnTancar.Location = new System.Drawing.Point(374, 816);
+            this.btnTancar.Location = new System.Drawing.Point(236, 786);
             this.btnTancar.Name = "btnTancar";
-            this.btnTancar.Size = new System.Drawing.Size(115, 40);
+            this.btnTancar.Size = new System.Drawing.Size(145, 40);
             this.btnTancar.TabIndex = 13;
-            this.btnTancar.Text = "Tancar";
+            this.btnTancar.Text = "❌Tancar";
             this.btnTancar.UseVisualStyleBackColor = false;
             this.btnTancar.Click += new System.EventHandler(this.btnTancar_Click);
             // 
@@ -411,11 +426,11 @@
             this.btnDesar.BackColor = System.Drawing.SystemColors.HotTrack;
             this.btnDesar.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDesar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnDesar.Location = new System.Drawing.Point(194, 816);
+            this.btnDesar.Location = new System.Drawing.Point(12, 786);
             this.btnDesar.Name = "btnDesar";
-            this.btnDesar.Size = new System.Drawing.Size(111, 40);
+            this.btnDesar.Size = new System.Drawing.Size(141, 40);
             this.btnDesar.TabIndex = 10;
-            this.btnDesar.Text = "Desar";
+            this.btnDesar.Text = "💾Desar";
             this.btnDesar.UseVisualStyleBackColor = false;
             this.btnDesar.Click += new System.EventHandler(this.btnDesar_Click);
             // 
@@ -439,7 +454,7 @@
             this.ClientSize = new System.Drawing.Size(939, 1055);
             this.Controls.Add(this.groupBox1);
             this.Name = "PublicarOferta";
-            this.Text = "v";
+            this.Text = "Nova oferta";
             this.Load += new System.EventHandler(this.PublicarOferta_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -481,5 +496,6 @@
         private System.Windows.Forms.ComboBox comboEstatdelaoferta;
         private System.Windows.Forms.ComboBox comboCicle;
         private System.Windows.Forms.ComboBox comboTipusdecontracte;
+        private System.Windows.Forms.Button btnTornar;
     }
 }

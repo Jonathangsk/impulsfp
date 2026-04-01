@@ -10,7 +10,7 @@ namespace IMPULS_Desktop
         public string Title { get; set; }
         public string Description { get; set; }
 
-        public string Company { get; set; }
+        public Empresa Company { get; set; } = new Empresa();
 
         public string RequiredSkills { get; set; }
 
@@ -29,6 +29,7 @@ namespace IMPULS_Desktop
         public string Estat { get; set; }
 
         public string Observacions { get; set; }
+
         public List<string> Applicants { get; set; } = new List<string>();
     }
 }

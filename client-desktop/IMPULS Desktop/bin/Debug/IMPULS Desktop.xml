@@ -4,6 +4,23 @@
         <name>IMPULS Desktop</name>
     </assembly>
     <members>
+        <member name="F:IMPULS_Desktop.Candidats.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:IMPULS_Desktop.Candidats.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:IMPULS_Desktop.Candidats.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
         <member name="F:IMPULS_Desktop.CanviContrasenya.components">
             <summary>
             Required designer variable.
@@ -16,6 +33,23 @@
             <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         </member>
         <member name="M:IMPULS_Desktop.CanviContrasenya.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:IMPULS_Desktop.PerfilDeEmpresa.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:IMPULS_Desktop.PerfilDeEmpresa.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:IMPULS_Desktop.PerfilDeEmpresa.InitializeComponent">
             <summary>
             Required method for Designer support - do not modify
             the contents of this method with the code editor.
@@ -38,18 +72,18 @@
             the contents of this method with the code editor.
             </summary>
         </member>
-        <member name="F:IMPULS_Desktop.PerfilEmpresa.components">
+        <member name="F:IMPULS_Desktop.RegistreNovaEmpresa.components">
             <summary>
             Required designer variable.
             </summary>
         </member>
-        <member name="M:IMPULS_Desktop.PerfilEmpresa.Dispose(System.Boolean)">
+        <member name="M:IMPULS_Desktop.RegistreNovaEmpresa.Dispose(System.Boolean)">
             <summary>
             Clean up any resources being used.
             </summary>
             <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         </member>
-        <member name="M:IMPULS_Desktop.PerfilEmpresa.InitializeComponent">
+        <member name="M:IMPULS_Desktop.RegistreNovaEmpresa.InitializeComponent">
             <summary>
             Required method for Designer support - do not modify
             the contents of this method with the code editor.
@@ -150,54 +184,54 @@
             the contents of this method with the code editor.
             </summary>
         </member>
-        <member name="T:IMPULS_Desktop.Empresa">
+        <member name="T:IMPULS_Desktop.PantallaEmpresa">
             <summary>
             <author>Josep Mª</author>
             Formulari per a usuaris de tipus "company".
             Permet tancar sessió (logout) de l'aplicació contra l'API REST.
             </summary>
         </member>
-        <member name="F:IMPULS_Desktop.Empresa.client">
+        <member name="F:IMPULS_Desktop.PantallaEmpresa.client">
             <summary>
             Client HTTP reutilitzable per fer peticions a l'API.
             </summary>
         </member>
-        <member name="M:IMPULS_Desktop.Empresa.#ctor">
+        <member name="M:IMPULS_Desktop.PantallaEmpresa.#ctor">
             <summary>
             Constructor del formulari.
             Inicialitza els components del formulari.
             </summary>
         </member>
-        <member name="M:IMPULS_Desktop.Empresa.Form4_Load(System.Object,System.EventArgs)">
+        <member name="M:IMPULS_Desktop.PantallaEmpresa.Form4_Load(System.Object,System.EventArgs)">
             <summary>
             Esdeveniment de càrrega del formulari.
             Actualment sense funcionalitat addicional.
             </summary>
         </member>
-        <member name="M:IMPULS_Desktop.Empresa.LogoutAPI">
+        <member name="M:IMPULS_Desktop.PantallaEmpresa.LogoutAPI">
             <summary>
             Realitza el logout de l'usuari a l'API.
             </summary>
             <returns>true si el logout és correcte, false en cas contrari.</returns>
         </member>
-        <member name="M:IMPULS_Desktop.Empresa.button1_Click(System.Object,System.EventArgs)">
+        <member name="M:IMPULS_Desktop.PantallaEmpresa.button1_Click(System.Object,System.EventArgs)">
             <summary>
             Event del botó de logout.
             Invoca LogoutAPI i, si és correcte, neteja la sessió i tanca el formulari.
             </summary>
         </member>
-        <member name="F:IMPULS_Desktop.Empresa.components">
+        <member name="F:IMPULS_Desktop.PantallaEmpresa.components">
             <summary>
             Required designer variable.
             </summary>
         </member>
-        <member name="M:IMPULS_Desktop.Empresa.Dispose(System.Boolean)">
+        <member name="M:IMPULS_Desktop.PantallaEmpresa.Dispose(System.Boolean)">
             <summary>
             Clean up any resources being used.
             </summary>
             <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         </member>
-        <member name="M:IMPULS_Desktop.Empresa.InitializeComponent">
+        <member name="M:IMPULS_Desktop.PantallaEmpresa.InitializeComponent">
             <summary>
             Required method for Designer support - do not modify
             the contents of this method with the code editor.
