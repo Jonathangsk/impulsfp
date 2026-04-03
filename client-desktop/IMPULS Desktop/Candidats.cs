@@ -12,24 +12,25 @@ namespace IMPULS_Desktop
         private readonly HttpClient client = new HttpClient();
         private List<Candidat> candidats = new List<Candidat>();
 
-        private string apiUrl = "https://tu-servidor/api/candidats";
+//        private string apiUrl = "https://tu-servidor/api/candidats";
+        private int ofertaId = 1;
+        private string apiUrl => $"https://tu-servidor/api/candidats/oferta/{ofertaId}";
 
-        public Candidats()
+        public Candidats(int ofertaId)
         {
             InitializeComponent();
+            this.ofertaId = ofertaId;
         }
 
         private async void Candidats_Load(object sender, EventArgs e)
         {
             await CargarCandidats();
 
-            // 🔥 EVENTO CORRECTO AQUÍ
+            
             dataGridView1.CellEndEdit += dataGridView1_CellEndEdit;
         }
 
-        // =========================
-        // CARGAR
-        // =========================
+      
         private async System.Threading.Tasks.Task CargarCandidats()
         {
             try
@@ -47,17 +48,15 @@ namespace IMPULS_Desktop
             }
             catch (HttpRequestException)
             {
-                MessageBox.Show("❌ No se puede conectar con el servidor");
+                MessageBox.Show("No es pot conectar amb el servidor");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("❌ Error: " + ex.Message);
+                MessageBox.Show("Error: " + ex.Message);
             }
         }
 
-        // =========================
-        // PUT AUTOMÁTICO
-        // =========================
+      
         private async void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -72,39 +71,56 @@ namespace IMPULS_Desktop
             }
             catch (HttpRequestException)
             {
-                MessageBox.Show("❌ Error de conexión al guardar");
+                MessageBox.Show("Error de conexión quan guardem");
                 await CargarCandidats();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("❌ Error al actualizar: " + ex.Message);
+                MessageBox.Show("Error quan actualitzem: " + ex.Message);
                 await CargarCandidats();
             }
         }
 
-        // =========================
-        // SELECCIONAR
-        // =========================
-        private void btnTriarCandidat_Click(object sender, EventArgs e)
+
+        private async void btnTriarCandidat_Click(object sender, EventArgs e)
         {
             if (dataGridView1.CurrentRow == null)
             {
-                MessageBox.Show("Selecciona un candidat");
+                MessageBox.Show("Tria un candidat");
                 return;
             }
 
             var c = (Candidat)dataGridView1.CurrentRow.DataBoundItem;
-            MessageBox.Show("Candidat seleccionat: " + c.Nom);
+
+            try
+            {
+                // 1. Marquem candidat com seleccionat
+                await client.PutAsync(
+                    $"http://localhost:8080/candidats/{c.Id}/select",
+                    null
+                );
+
+                // 2. Marquem oferta com expired
+                await client.PutAsync(
+                    $"http://localhost:8080/offers/{ofertaId}/expire",
+                    null
+                );
+
+                MessageBox.Show("Candidat seleccionat i oferta tancada");
+
+                await CargarCandidats();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
         }
 
-        // =========================
-        // DELETE
-        // =========================
         private async void btnEliminarCandidat_Click(object sender, EventArgs e)
         {
             if (dataGridView1.CurrentRow == null)
             {
-                MessageBox.Show("Selecciona un candidat");
+                MessageBox.Show("Tria un candidat");
                 return;
             }
 
@@ -127,7 +143,7 @@ namespace IMPULS_Desktop
             }
             catch (HttpRequestException)
             {
-                MessageBox.Show("❌ Error de conexión");
+                MessageBox.Show("Error de conexió");
             }
         }
 
@@ -144,9 +160,7 @@ namespace IMPULS_Desktop
 
     }
 
-    // =========================
-    // MODELO
-    // =========================
+
     public class Candidat
     {
         public int Id { get; set; }

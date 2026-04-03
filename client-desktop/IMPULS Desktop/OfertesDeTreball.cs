@@ -26,7 +26,7 @@ namespace IMPULS_Desktop
 
         private async Task<List<Oferta>> GetOffers()
         {
-            using (HttpClient client = new HttpClient())
+         using (HttpClient client = new HttpClient())
             {
                 try
                 {
@@ -108,15 +108,8 @@ namespace IMPULS_Desktop
 
             var oferta = (Oferta)dataGridView1.CurrentRow.DataBoundItem;
 
-            if (oferta.Applicants == null || oferta.Applicants.Count == 0)
-            {
-                MessageBox.Show("No hi ha candidats");
-                return;
-            }
-
-            var form = new Candidats();
+            var form = new Candidats(oferta.Id);
             form.Show();
-
         }
 
         private void btnTornar_Click(object sender, EventArgs e)
